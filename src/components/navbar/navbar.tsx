@@ -9,6 +9,7 @@ import {
 	MenuItem,
 	MenuButton,
 	Divider,
+	Link,
 } from "@mui/joy";
 import {
 	Download,
@@ -58,27 +59,50 @@ function Navbar({ isLogged }: NavbarProps) {
 					justifyContent: "space-between",
 				}}
 			>
-				<Typography level="h3" startDecorator={<Rocket />} className="logo">
+				<Typography
+					component="a"
+					href="/"
+					level="h3"
+					startDecorator={<Rocket />}
+					className="logo"
+					sx={{ textDecoration: "none" }}
+				>
 					raponikt
 				</Typography>
 				<Stack sx={{ display: "flex", flexDirection: "row", gap: 3 }}>
-					<Button variant="plain" color="neutral" startDecorator={<Download />}>
-						Downloads
-					</Button>
-					<Button variant="plain" color="neutral" startDecorator={<Info />}>
-						Informations
-					</Button>
-					<Button variant="plain" color="neutral" startDecorator={<Support />}>
-						Support
-					</Button>
+					<Link href="/download">
+						<Button
+							variant="plain"
+							color="neutral"
+							startDecorator={<Download />}
+						>
+							Downloads
+						</Button>
+					</Link>
+					<Link href="/faq">
+						<Button variant="plain" color="neutral" startDecorator={<Info />}>
+							Informations
+						</Button>
+					</Link>
+					<Link href="/support">
+						<Button
+							variant="plain"
+							color="neutral"
+							startDecorator={<Support />}
+						>
+							Support
+						</Button>
+					</Link>
 				</Stack>
-				<Button
-					variant="soft"
-					startDecorator={<LoginRounded />}
-					color="neutral"
-				>
-					Sign In
-				</Button>
+				<Link href="/login">
+					<Button
+						variant="soft"
+						startDecorator={<LoginRounded />}
+						color="neutral"
+					>
+						Sign In
+					</Button>
+				</Link>
 				{isLogged && (
 					<Dropdown>
 						<MenuButton variant="soft">
