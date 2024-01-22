@@ -15,7 +15,6 @@ import {
 	Download,
 	Info,
 	Language,
-	Rocket,
 	Support,
 	Settings,
 	Logout,
@@ -23,6 +22,7 @@ import {
 	ArrowDropDown,
 	Sell,
 	LoginRounded,
+	RocketLaunch,
 } from "@mui/icons-material";
 
 interface NavbarProps {
@@ -63,7 +63,7 @@ function Navbar({ isLogged }: NavbarProps) {
 					component="a"
 					href="/"
 					level="h3"
-					startDecorator={<Rocket />}
+					startDecorator={<RocketLaunch />}
 					className="logo"
 					sx={{ textDecoration: "none" }}
 				>
