@@ -27,10 +27,18 @@ function Hero() {
 					<Button
 						size="lg"
 						sx={{ background: "linear-gradient(45deg, #cc0000, #710000)" }}
+						component="a"
+						href="/docs"
 					>
 						Get Started
 					</Button>
-					<Button size="lg" color="neutral" variant="outlined">
+					<Button
+						size="lg"
+						color="neutral"
+						variant="outlined"
+						component="a"
+						href="/download"
+					>
 						Download
 					</Button>
 				</Stack>
