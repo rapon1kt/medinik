@@ -103,31 +103,6 @@ export default function Login() {
 					}}
 				>
 					<Box
-						component="header"
-						sx={{
-							py: 3,
-							display: "flex",
-							alignItems: "left",
-							justifyContent: "space-between",
-						}}
-					>
-						<Box
-							sx={{
-								gap: 2,
-								display: "flex",
-								alignItems: "center",
-							}}
-						>
-							<a href="/">
-								<IconButton variant="soft" color="primary" size="sm">
-									<Rocket />
-								</IconButton>
-							</a>
-
-							<Typography level="title-lg">raponikt</Typography>
-						</Box>
-					</Box>
-					<Box
 						component="main"
 						sx={{
 							my: "auto",
