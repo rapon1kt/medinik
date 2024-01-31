@@ -79,7 +79,7 @@ function Navbar({ isLogged }: NavbarProps) {
 							Downloads
 						</Button>
 					</Link>
-					<Link href="/faq">
+					<Link href="/infos">
 						<Button variant="plain" color="neutral" startDecorator={<Info />}>
 							Informations
 						</Button>
