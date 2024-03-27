@@ -32,7 +32,7 @@ export default function DownloadPage() {
 				sx={{
 					display: "flex",
 					flexDirection: "column",
-					background: (theme) => theme.palette.background.surface,
+					background: (theme: any) => theme.palette.background.surface,
 					minHeight: "100vh",
 				}}
 			>
@@ -112,9 +112,10 @@ export default function DownloadPage() {
 											mx: 2,
 											borderRadius: "12px",
 											mt: 1,
-											background: (mode) => mode.palette.background.level1,
+											background: (mode: any) => mode.palette.background.level1,
 											":hover": {
-												background: (mode) => mode.palette.background.level2,
+												background: (mode: any) =>
+													mode.palette.background.level2,
 											},
 										}}
 										fontWeight={600}
@@ -132,9 +133,11 @@ export default function DownloadPage() {
 											width: "100%",
 											mx: 2,
 											borderRadius: "12px",
-											backgroundColor: (mode) => mode.palette.background.level1,
+											backgroundColor: (mode: any) =>
+												mode.palette.background.level1,
 											":hover": {
-												background: (mode) => mode.palette.background.level2,
+												background: (mode: any) =>
+													mode.palette.background.level2,
 											},
 										}}
 										variant="solid"
@@ -152,9 +155,11 @@ export default function DownloadPage() {
 											mx: 2,
 											width: "100%",
 											borderRadius: "12px",
-											backgroundColor: (mode) => mode.palette.background.level1,
+											backgroundColor: (mode: any) =>
+												mode.palette.background.level1,
 											":hover": {
-												background: (mode) => mode.palette.background.level2,
+												background: (mode: any) =>
+													mode.palette.background.level2,
 											},
 										}}
 										fontWeight={600}

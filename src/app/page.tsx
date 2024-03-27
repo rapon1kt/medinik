@@ -16,7 +16,7 @@ export default function Home() {
 				sx={{
 					display: "flex",
 					flexDirection: "column",
-					background: (theme) => theme.palette.background.surface,
+					background: (theme: any) => theme.palette.background.surface,
 				}}
 			>
 				<Navbar />
