@@ -6,7 +6,6 @@ import {
 	Typography,
 	Input,
 	Link,
-	IconButton,
 	FormLabel,
 	FormControl,
 	Divider,
@@ -17,7 +16,6 @@ import {
 	GlobalStyles,
 	formLabelClasses,
 } from "@mui/joy";
-import { Rocket } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import { AlertComponent } from "@/components";
 
