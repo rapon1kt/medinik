@@ -1,6 +1,9 @@
 import { Button, Container, Stack, Typography, Box } from "@mui/joy";
+import { useMediaQuery } from "@mui/material";
 
 function Hero() {
+	const media = useMediaQuery("(max-width: 800px)");
+
 	return (
 		<Container
 			maxWidth="lg"
@@ -11,12 +14,29 @@ function Hero() {
 				height: "90vh",
 			}}
 		>
-			<Box sx={{ width: "60%" }}>
+			<Box
+				sx={
+					media
+						? {
+								width: { lg: "60%", md: "80%" },
+								display: "flex",
+								flexDirection: "column",
+								alignItems: "center",
+								textAlign: "center",
+						  }
+						: {
+								width: { lg: "60%", md: "100%" },
+						  }
+				}
+			>
 				<Typography level="h2">Easily and fast</Typography>
 				<Typography level="h1" gutterBottom>
 					Technology software
 				</Typography>
-				<Typography level="body-lg" sx={{ width: "60%", mb: 3 }}>
+				<Typography
+					level="body-lg"
+					sx={{ width: media ? "100%" : "60%", mb: 3 }}
+				>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
 					scelerisque accumsan fermentum. Proin at risus pharetra, bibendum nunc
 					eget, pellentesque dui. Nunc porta nulla at elementum placerat.
@@ -47,6 +67,7 @@ function Hero() {
 				</Typography>
 			</Box>
 			<img
+				id="software-example"
 				src="software-example.png"
 				alt="software-example"
 				style={{ width: "40%" }}
