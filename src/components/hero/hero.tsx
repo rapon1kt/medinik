@@ -66,12 +66,14 @@ function Hero() {
 					Supported on Windows, Linux, and macOS
 				</Typography>
 			</Box>
-			<img
-				id="software-example"
-				src="software-example.png"
-				alt="software-example"
-				style={{ width: "40%" }}
-			/>
+			{!media && (
+				<img
+					id="software-example"
+					src="software-example.png"
+					alt="software-example"
+					style={{ width: "40%" }}
+				/>
+			)}
 		</Container>
 	);
 }
