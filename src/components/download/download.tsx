@@ -1,7 +1,11 @@
+"use client";
 import { East, FileDownload } from "@mui/icons-material";
 import { Container, Typography, Button, Stack } from "@mui/joy";
+import { useMediaQuery } from "@mui/material";
 
 function Download() {
+	const media = useMediaQuery("(max-width: 451px)");
+
 	return (
 		<Container maxWidth="lg" sx={{ textAlign: "center", my: 16 }}>
 			<Typography level="h1">
@@ -14,7 +18,8 @@ function Download() {
 			<Stack
 				sx={{
 					display: "flex",
-					flexDirection: "row",
+					flexDirection: media ? "column" : "row",
+					alignItems: "center",
 					justifyContent: "center",
 					gap: 4,
 				}}
