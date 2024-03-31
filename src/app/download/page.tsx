@@ -24,8 +24,11 @@ import {
 	Rocket,
 	SafetyCheck,
 } from "@mui/icons-material";
+import { useMediaQuery } from "@mui/material";
 
 export default function DownloadPage() {
+	const media = useMediaQuery("(max-width: 1120px)");
+
 	return (
 		<CssVarsProvider defaultMode="dark">
 			<Box
@@ -44,7 +47,7 @@ export default function DownloadPage() {
 						flexDirection: "column",
 						alignItems: "center",
 						justifyContent: "space-between",
-						padding: "4rem",
+						padding: !media ? "4rem" : "4rem 0 2rem 0",
 					}}
 				>
 					<Stack sx={{ textAlign: "center", height: "20%", gap: 3 }}>
@@ -72,105 +75,115 @@ export default function DownloadPage() {
 						sx={{
 							display: "flex",
 							flexDirection: "row",
+							alignItems: "center",
+							justifyContent: "center",
 							width: "100%",
 							height: "80%",
 						}}
 					>
-						<Stack
-							sx={{
-								display: "flex",
-								flexDirection: "column",
-								width: "20%",
-								gap: 1,
-							}}
-						>
-							<Box
+						{!media && (
+							<Stack
 								sx={{
 									display: "flex",
 									flexDirection: "column",
-									alignItems: "center",
+									width: "20%",
+									gap: 1,
 								}}
 							>
-								<img
-									src="/assets/favicon.ico"
-									width={200}
-									height={200}
-									style={{ borderRadius: "12px" }}
-								/>
-								<Typography gutterBottom level="body-lg">
-									Version 1.9.2.3764.5
-								</Typography>
-							</Box>
-							<Divider sx={{ mx: 2 }} />
-							<Stack sx={{ display: "flex", width: "100%", gap: 2 }}>
-								<Link href="https://www.github.com/rapon1kt/medinik">
-									<Typography
-										sx={{
-											p: 1,
-											fontDecoration: "none",
-											width: "100%",
-											mx: 2,
-											borderRadius: "12px",
-											mt: 1,
-											background: (mode: any) => mode.palette.background.level1,
-											":hover": {
-												background: (mode: any) =>
-													mode.palette.background.level2,
-											},
-										}}
-										fontWeight={600}
-										variant="solid"
-										endDecorator={<ChangeCircle style={{ color: "#710000" }} />}
-									>
-										Changelog
+								<Box
+									sx={{
+										display: "flex",
+										flexDirection: "column",
+										alignItems: "center",
+									}}
+								>
+									<img
+										src="/assets/favicon.ico"
+										width={200}
+										height={200}
+										style={{ borderRadius: "12px" }}
+									/>
+									<Typography gutterBottom level="body-lg">
+										Version 1.9.2.3764.5
 									</Typography>
-								</Link>
-								<Link href="https://www.github.com/rapon1kt/medinik/releases">
-									<Typography
-										sx={{
-											p: 1,
-											fontDecoration: "none",
-											width: "100%",
-											mx: 2,
-											borderRadius: "12px",
-											backgroundColor: (mode: any) =>
-												mode.palette.background.level1,
-											":hover": {
+								</Box>
+								<Divider sx={{ mx: 2 }} />
+								<Stack sx={{ display: "flex", width: "100%", gap: 2 }}>
+									<Link href="https://www.github.com/rapon1kt/medinik">
+										<Typography
+											sx={{
+												p: 1,
+												fontDecoration: "none",
+												width: "100%",
+												mx: 2,
+												borderRadius: "12px",
+												mt: 1,
 												background: (mode: any) =>
-													mode.palette.background.level2,
-											},
-										}}
-										variant="solid"
-										endDecorator={<NewReleases style={{ color: "#710000" }} />}
-										fontWeight={600}
-									>
-										News
-									</Typography>
-								</Link>
-								<Link href="https://www.github.com/rapon1kt/medinik/issues">
-									<Typography
-										sx={{
-											p: 1,
-											fontDecoration: "none",
-											mx: 2,
-											width: "100%",
-											borderRadius: "12px",
-											backgroundColor: (mode: any) =>
-												mode.palette.background.level1,
-											":hover": {
-												background: (mode: any) =>
-													mode.palette.background.level2,
-											},
-										}}
-										fontWeight={600}
-										variant="solid"
-										endDecorator={<BugReport style={{ color: "#710000" }} />}
-									>
-										Report Bugs
-									</Typography>
-								</Link>
+													mode.palette.background.level1,
+												":hover": {
+													background: (mode: any) =>
+														mode.palette.background.level2,
+												},
+											}}
+											fontWeight={600}
+											variant="solid"
+											endDecorator={
+												<ChangeCircle style={{ color: "#710000" }} />
+											}
+										>
+											Changelog
+										</Typography>
+									</Link>
+									<Link href="https://www.github.com/rapon1kt/medinik/releases">
+										<Typography
+											sx={{
+												p: 1,
+												fontDecoration: "none",
+												width: "100%",
+												mx: 2,
+												borderRadius: "12px",
+												backgroundColor: (mode: any) =>
+													mode.palette.background.level1,
+												":hover": {
+													background: (mode: any) =>
+														mode.palette.background.level2,
+												},
+											}}
+											variant="solid"
+											endDecorator={
+												<NewReleases style={{ color: "#710000" }} />
+											}
+											fontWeight={600}
+										>
+											News
+										</Typography>
+									</Link>
+									<Link href="https://www.github.com/rapon1kt/medinik/issues">
+										<Typography
+											sx={{
+												p: 1,
+												fontDecoration: "none",
+												mx: 2,
+												width: "100%",
+												borderRadius: "12px",
+												backgroundColor: (mode: any) =>
+													mode.palette.background.level1,
+												":hover": {
+													background: (mode: any) =>
+														mode.palette.background.level2,
+												},
+											}}
+											fontWeight={600}
+											variant="solid"
+											endDecorator={<BugReport style={{ color: "#710000" }} />}
+										>
+											Report Bugs
+										</Typography>
+									</Link>
+								</Stack>
 							</Stack>
-						</Stack>
+						)}
+
 						{/* <Divider sx={{ mx: 2 }} orientation="vertical" /> */}
 						<Stack
 							sx={{
@@ -235,11 +248,19 @@ export default function DownloadPage() {
 										type specimen book.
 									</Typography>
 								</Card>
-								<Stack sx={{ display: "flex", flexDirection: "row", gap: 2 }}>
+								<Stack
+									sx={{
+										display: "flex",
+										flexDirection: !media ? "row" : "column",
+										alignItems: "center",
+										justifyContent: "center",
+										gap: 2,
+									}}
+								>
 									<Button
 										variant="outlined"
 										sx={{
-											width: "25%",
+											width: !media ? "25%" : "100%",
 											height: "2.5rem",
 											borderRadius: "12px",
 											borderColor: "#710000",
@@ -263,6 +284,7 @@ export default function DownloadPage() {
 										variant="soft"
 										color="neutral"
 										sx={{
+											width: !media ? "25%" : "100%",
 											color: "white",
 											height: "2.5rem",
 											borderRadius: "12px",
@@ -306,18 +328,7 @@ export default function DownloadPage() {
 									<Typography level="body-sm">
 										Contrary to popular belief, Lorem Ipsum is not simply random
 										text. It has roots in a piece of classical Latin literature
-										from 45 BC, making it over 2000 years old. Richard
-										McClintock, a Latin professor at Hampden-Sydney College in
-										Virginia, looked up one of the more obscure Latin words,
-										consectetur, from a Lorem Ipsum passage, and going through
-										the cites of the word in classical literature, discovered
-										the undoubtable source. Lorem Ipsum comes from sections
-										1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
-										Extremes of Good and Evil) by Cicero, written in 45 BC. This
-										book is a treatise on the theory of ethics, very popular
-										during the Renaissance. The first line of Lorem Ipsum,
-										"Lorem ipsum dolor sit amet..", comes from a line in section
-										1.10.32.
+										from 45 BC, making it over 2000 years old.
 									</Typography>
 								</Typography>
 							</Stack>
