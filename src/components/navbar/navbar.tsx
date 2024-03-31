@@ -120,7 +120,7 @@ function Navbar({ isLogged }: NavbarProps) {
 						</MenuButton>
 						<Menu size="sm">
 							{isLogged && (
-								<MenuItem href="/profile" sx={{ gap: 1 }}>
+								<MenuItem component="a" href="/profile" sx={{ gap: 1 }}>
 									<Button
 										variant="plain"
 										color="neutral"
@@ -130,7 +130,7 @@ function Navbar({ isLogged }: NavbarProps) {
 									</Button>
 								</MenuItem>
 							)}
-							<MenuItem href="/download" sx={{ gap: 1 }}>
+							<MenuItem component="a" href="/download" sx={{ gap: 1 }}>
 								<Button
 									variant="plain"
 									color="neutral"
@@ -139,7 +139,7 @@ function Navbar({ isLogged }: NavbarProps) {
 									Downloads
 								</Button>
 							</MenuItem>
-							<MenuItem href="/infos" sx={{ gap: 1 }}>
+							<MenuItem component="a" href="/infos" sx={{ gap: 1 }}>
 								<Button
 									variant="plain"
 									color="neutral"
@@ -148,7 +148,7 @@ function Navbar({ isLogged }: NavbarProps) {
 									Informations
 								</Button>
 							</MenuItem>
-							<MenuItem href="/support" sx={{ gap: 1 }}>
+							<MenuItem component="a" href="/support" sx={{ gap: 1 }}>
 								<Button
 									variant="plain"
 									color="neutral"
@@ -157,7 +157,7 @@ function Navbar({ isLogged }: NavbarProps) {
 									Support
 								</Button>
 							</MenuItem>
-							<MenuItem href="/login" sx={{ gap: 1 }}>
+							<MenuItem component="a" href="/login" sx={{ gap: 1 }}>
 								<Button
 									variant="plain"
 									startDecorator={<LoginRounded />}
