@@ -70,7 +70,7 @@ function Navbar({ isLogged }: NavbarProps) {
 					className="logo"
 					sx={{ textDecoration: "none" }}
 				>
-					raponikt
+					Medinik
 				</Typography>
 				{!media ? (
 					<>
