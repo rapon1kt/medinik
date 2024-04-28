@@ -28,7 +28,15 @@ function Download() {
 					variant="soft"
 					color="neutral"
 					size="lg"
-					sx={{ background: "#710000", width: "15rem" }}
+					sx={{
+						background: "#710000",
+						transition: "ease-in-out 0.2s all",
+						width: "15rem",
+						":hover": {
+							transition: "ease-in 0.2s all",
+							background: "#ab0000",
+						},
+					}}
 					endDecorator={<East />}
 				>
 					Register now
