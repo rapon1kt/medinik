@@ -50,9 +50,9 @@ export default function Login() {
 			description: "Você será redirecionado, seja bem-vindo!",
 			severity: "success",
 		});
+		localStorage.setItem("USER", JSON.stringify(data));
 		setTimeout(() => {
 			router.push("/login");
-			console.log(data);
 		}, 1500);
 	};
 
