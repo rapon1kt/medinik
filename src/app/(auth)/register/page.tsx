@@ -15,16 +15,7 @@ import {
 	formLabelClasses,
 	Divider,
 } from "@mui/joy";
-import { useRouter } from "next/navigation";
 import { AlertComponent } from "@/components";
-
-interface FormElements extends HTMLFormControlsCollection {
-	email: HTMLInputElement;
-	password: HTMLInputElement;
-}
-interface SignInFormElement extends HTMLFormElement {
-	readonly elements: FormElements;
-}
 
 interface MessageProps {
 	title: string;
@@ -34,26 +25,8 @@ interface MessageProps {
 
 export default function Login() {
 	const [message, setMessage] = React.useState<MessageProps>();
-
-	const router = useRouter();
-
-	const handleSubmit = (event: React.FormEvent<SignInFormElement>) => {
-		event.preventDefault();
-		const formElements = event.currentTarget.elements;
-		const data = {
-			email: formElements.email.value,
-			password: formElements.password.value,
-		};
-
-		setMessage({
-			title: "Sucesso!",
-			description: "Você será redirecionado, seja bem-vindo!",
-			severity: "success",
-		});
-		localStorage.setItem("USER", JSON.stringify(data));
-		setTimeout(() => {
-			router.push("/login");
-		}, 1500);
+	const handleSubmit = () => {
+		console.log("Success");
 	};
 
 	return (
