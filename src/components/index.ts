@@ -5,3 +5,4 @@ export { default as PatchNotes } from "./patch-notes/patch-notes";
 export { default as Download } from "./download/download";
 export { default as Footer } from "./footer/footer";
 export { default as AlertComponent } from "./alert/alert";
+export { default as ChangeTheme } from "./change-theme/changeTheme";
