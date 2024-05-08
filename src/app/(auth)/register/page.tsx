@@ -14,8 +14,12 @@ import {
 	GlobalStyles,
 	formLabelClasses,
 	Divider,
+	IconButton,
+	Checkbox,
 } from "@mui/joy";
-import { AlertComponent } from "@/components";
+import { AlertComponent, ChangeTheme } from "@/components";
+import { GitHub, RocketLaunch } from "@mui/icons-material";
+import { useRouter } from "next/navigation";
 
 interface MessageProps {
 	title: string;
@@ -23,8 +27,11 @@ interface MessageProps {
 	severity: "danger" | "success";
 }
 
-export default function Login() {
+export default function Register() {
 	const [message, setMessage] = React.useState<MessageProps>();
+
+	const router = useRouter();
+
 	const handleSubmit = () => {
 		console.log("Success");
 	};
@@ -71,6 +78,27 @@ export default function Login() {
 					}}
 				>
 					<Box
+						component="header"
+						sx={{
+							py: 3,
+							display: "flex",
+							justifyContent: "space-between",
+						}}
+					>
+						<Box sx={{ gap: 2, display: "flex", alignItems: "center" }}>
+							<IconButton
+								onClick={() => router.push("/")}
+								variant="soft"
+								color="danger"
+								size="sm"
+							>
+								<RocketLaunch />
+							</IconButton>
+							<Typography level="title-lg">Medinik</Typography>
+						</Box>
+						<ChangeTheme />
+					</Box>
+					<Box
 						component="main"
 						sx={{
 							my: "auto",
@@ -78,7 +106,7 @@ export default function Login() {
 							pb: 5,
 							display: "flex",
 							flexDirection: "column",
-							gap: 2,
+							gap: 0.5,
 							width: 400,
 							maxWidth: "100%",
 							mx: "auto",
@@ -93,22 +121,38 @@ export default function Login() {
 							},
 						}}
 					>
-						<Stack gap={4} sx={{ mb: 2 }}>
+						<Stack gap={3} sx={{ mb: 2 }}>
 							<Stack gap={1}>
 								<Typography level="h3">Sign Up</Typography>
 								<Typography level="body-sm">
-									Already have an account?{" "}
-									<Link
-										href="/login"
-										level="title-sm"
-										sx={{ color: "#710000", textDecoration: "#710000" }}
-									>
-										Sign in!
+									Already have an account,{" "}
+									<Link href="/login" level="title-sm" color="danger">
+										Sign In!
 									</Link>
 								</Typography>
 							</Stack>
+							<Button
+								startDecorator={<GitHub sx={{ color: "#e47474" }} />}
+								variant="soft"
+								color="neutral"
+								fullWidth
+							>
+								Continue with GitHub
+							</Button>
 						</Stack>
-						<Divider />
+						<Divider
+							sx={(theme) => ({
+								[theme.getColorSchemeSelector("light")]: {
+									color: { xs: "#FFF", md: "text.tertiary" },
+									"--Divider-lineColor": {
+										xs: "#FFF",
+										md: "var(--joy-palette-divider)",
+									},
+								},
+							})}
+						>
+							or
+						</Divider>
 						{message && (
 							<AlertComponent
 								message={message}
@@ -119,6 +163,10 @@ export default function Login() {
 						<Stack gap={4} sx={{ mt: 2 }}>
 							<form onSubmit={handleSubmit}>
 								<FormControl required>
+									<FormLabel>Name</FormLabel>
+									<Input type="name" name="name" />
+								</FormControl>
+								<FormControl required>
 									<FormLabel>Email</FormLabel>
 									<Input type="email" name="email" />
 								</FormControl>
@@ -126,14 +174,15 @@ export default function Login() {
 									<FormLabel>Password</FormLabel>
 									<Input type="password" name="password" />
 								</FormControl>
+								<Checkbox
+									color="danger"
+									size="sm"
+									label="Accept Terms of Use"
+									name="terms"
+									defaultChecked
+								/>
 								<Stack gap={4} sx={{ mt: 2 }}>
-									<Button
-										variant="soft"
-										color="neutral"
-										type="submit"
-										fullWidth
-										sx={{ background: "#710000" }}
-									>
+									<Button variant="soft" color="danger" type="submit" fullWidth>
 										Sign up
 									</Button>
 								</Stack>

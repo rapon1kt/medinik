@@ -15,8 +15,11 @@ import {
 	CssBaseline,
 	GlobalStyles,
 	formLabelClasses,
+	IconButton,
 } from "@mui/joy";
-import { AlertComponent } from "@/components";
+import { AlertComponent, ChangeTheme } from "@/components";
+import { RocketLaunch, GitHub } from "@mui/icons-material";
+import { useRouter } from "next/navigation";
 interface MessageProps {
 	title: string;
 	description: string;
@@ -25,6 +28,8 @@ interface MessageProps {
 
 export default function Login() {
 	const [message, setMessage] = React.useState<MessageProps>();
+
+	const router = useRouter();
 
 	const handleSubmit = () => {
 		console.log("Success");
@@ -72,6 +77,27 @@ export default function Login() {
 					}}
 				>
 					<Box
+						component="header"
+						sx={{
+							py: 3,
+							display: "flex",
+							justifyContent: "space-between",
+						}}
+					>
+						<Box sx={{ gap: 2, display: "flex", alignItems: "center" }}>
+							<IconButton
+								onClick={() => router.push("/")}
+								variant="soft"
+								color="danger"
+								size="sm"
+							>
+								<RocketLaunch />
+							</IconButton>
+							<Typography level="title-lg">Medinik</Typography>
+						</Box>
+						<ChangeTheme />
+					</Box>
+					<Box
 						component="main"
 						sx={{
 							my: "auto",
@@ -79,7 +105,7 @@ export default function Login() {
 							pb: 5,
 							display: "flex",
 							flexDirection: "column",
-							gap: 2,
+							gap: 1,
 							width: 400,
 							maxWidth: "100%",
 							mx: "auto",
@@ -94,22 +120,23 @@ export default function Login() {
 							},
 						}}
 					>
-						<Stack gap={4} sx={{ mb: 2 }}>
+						<Stack gap={2} sx={{ mb: 2 }}>
 							<Stack gap={1}>
 								<Typography level="h3">Sign in</Typography>
 								<Typography level="body-sm">
 									New to company?{" "}
-									<Link
-										href="/register"
-										level="title-sm"
-										sx={{ color: "#710000", textDecoration: "#710000" }}
-									>
+									<Link href="/register" level="title-sm" color="danger">
 										Sign up!
 									</Link>
 								</Typography>
 							</Stack>
-							<Button variant="soft" color="neutral" fullWidth>
-								Continue with Google
+							<Button
+								startDecorator={<GitHub sx={{ color: "#e47474" }} />}
+								variant="soft"
+								color="neutral"
+								fullWidth
+							>
+								Continue with GitHub
 							</Button>
 						</Stack>
 						<Divider
@@ -150,7 +177,12 @@ export default function Login() {
 											alignItems: "center",
 										}}
 									>
-										<Checkbox size="sm" label="Remember me" name="persistent" />
+										<Checkbox
+											color="danger"
+											size="sm"
+											label="Remember me"
+											name="persistent"
+										/>
 										<Link
 											level="title-sm"
 											href="/support"
@@ -159,13 +191,7 @@ export default function Login() {
 											Forgot your password?
 										</Link>
 									</Box>
-									<Button
-										variant="soft"
-										color="neutral"
-										type="submit"
-										fullWidth
-										sx={{ background: "#710000" }}
-									>
+									<Button variant="soft" color="danger" type="submit" fullWidth>
 										Sign in
 									</Button>
 								</Stack>
