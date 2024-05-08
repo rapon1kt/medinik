@@ -8,7 +8,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-	title: "Software Present",
+	title: "Medinik",
 	description: "Made with love by raponikt :)",
 	icons: {
 		icon: "/assets/favicon.ico",
