@@ -15,9 +15,11 @@ import {
 	CssBaseline,
 	GlobalStyles,
 	formLabelClasses,
+	FormHelperText,
 } from "@mui/joy";
 import { useRouter } from "next/navigation";
 import { AlertComponent } from "@/components";
+import { InfoOutlined } from "@mui/icons-material";
 
 interface FormElements extends HTMLFormControlsCollection {
 	email: HTMLInputElement;
@@ -34,12 +36,29 @@ interface MessageProps {
 	severity: "danger" | "success";
 }
 
+interface DataProps {
+	email: string;
+	password: string;
+}
+
+interface InputMessagesProps {
+	email?: {
+		type: string;
+	};
+	password?: {
+		type: string;
+	};
+}
+
 export default function Login() {
 	const [message, setMessage] = React.useState<MessageProps>();
+	const [inputMessages, setInputMessages] =
+		React.useState<InputMessagesProps>();
 
 	const router = useRouter();
 
 	const handleSubmit = (event: React.FormEvent<SignInFormElement>) => {
+		setInputMessages(undefined);
 		event.preventDefault();
 		const formElements = event.currentTarget.elements;
 		const data = {
@@ -48,15 +67,43 @@ export default function Login() {
 			persistent: formElements.persistent.checked,
 		};
 
-		setMessage({
-			title: "Sucesso!",
-			description: "Você será redirecionado, seja bem-vindo!",
-			severity: "success",
-		});
-		setTimeout(() => {
-			router.push("/");
-			console.log(data);
-		}, 1500);
+		const dataB: DataProps = JSON.parse(localStorage.getItem("USER")!);
+
+		if (data.email !== dataB.email && data.password !== dataB.password) {
+			setInputMessages({
+				email: {
+					type: "error",
+				},
+				password: {
+					type: "error",
+				},
+			});
+		} else if (data.email !== dataB.email && data.password === dataB.password) {
+			setInputMessages({
+				...inputMessages,
+				email: {
+					type: "error",
+				},
+			});
+		} else if (data.email === dataB.email && data.password !== dataB.password) {
+			setInputMessages({
+				...inputMessages,
+				password: {
+					type: "error",
+				},
+			});
+		} else {
+			setMessage({
+				title: "Sucesso!",
+				description: "Você será redirecionado, seja bem-vindo!",
+				severity: "success",
+			});
+			localStorage.setItem("TOKEN", "ahnKJ!@#HKsd.çe23jSDm1o237");
+			setTimeout(() => {
+				router.push("/");
+				console.log(data);
+			}, 1500);
+		}
 	};
 
 	return (
@@ -163,13 +210,44 @@ export default function Login() {
 						)}
 						<Stack gap={4} sx={{ mt: 2 }}>
 							<form onSubmit={handleSubmit}>
-								<FormControl required>
+								<FormControl
+									required
+									error={inputMessages?.email ? true : false}
+								>
 									<FormLabel>Email</FormLabel>
-									<Input type="email" name="email" />
+									{inputMessages?.email ? (
+										<>
+											<Input
+												error
+												placeholder="E-mail not found"
+												type="email"
+												name="email"
+											/>
+											<FormHelperText>
+												<InfoOutlined />
+												Opps! E-mail do not match...
+											</FormHelperText>
+										</>
+									) : (
+										<Input type="email" name="email" />
+									)}
 								</FormControl>
-								<FormControl required>
+								<FormControl
+									required
+									error={inputMessages?.password ? true : false}
+								>
 									<FormLabel>Password</FormLabel>
-									<Input type="password" name="password" />
+									{inputMessages?.password ? (
+										<>
+											<Input error type="password" name="password" />
+											<FormHelperText>
+												<InfoOutlined />
+												Opps! something is wrong.
+											</FormHelperText>
+										</>
+									) : (
+										<Input type="password" name="password" />
+									)}
 								</FormControl>
 								<Stack gap={4} sx={{ mt: 2 }}>
 									<Box
