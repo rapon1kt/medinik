@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { ThemeProvider } from "@/provider";
+import { ThemeProvider, AuthProvider } from "@/provider";
 
 const poppins = Poppins({
 	subsets: ["latin"],
@@ -23,9 +23,11 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="pt-br">
-			<ThemeProvider>
-				<body className={poppins.className}>{children}</body>
-			</ThemeProvider>
+			<AuthProvider>
+				<ThemeProvider>
+					<body className={poppins.className}>{children}</body>
+				</ThemeProvider>
+			</AuthProvider>
 		</html>
 	);
 }
