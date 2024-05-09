@@ -37,7 +37,7 @@ export default function Register() {
 	};
 
 	return (
-		<CssVarsProvider defaultMode="dark" disableTransitionOnChange>
+		<>
 			<CssBaseline />
 			<GlobalStyles
 				styles={{
@@ -217,6 +217,6 @@ export default function Register() {
 					},
 				})}
 			/>
-		</CssVarsProvider>
+		</>
 	);
 }
