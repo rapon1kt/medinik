@@ -32,7 +32,11 @@ export default function AlertComponent({
 					}}
 				>
 					<div>
-						<Check sx={{ fontSize: "lx12" }} />
+						{message.severity === "success" ? (
+							<Check sx={{ fontSize: "lx12" }} />
+						) : (
+							<Close sx={{ fontSize: "lx12" }} />
+						)}
 					</div>
 				</AspectRatio>
 			}
