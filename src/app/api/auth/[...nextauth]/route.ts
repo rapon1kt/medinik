@@ -1,8 +1,8 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 
-export const nextAuthOptions: NextAuthOptions = {
+export const nextAuthOptions: any = {
 	providers: [
 		Credentials({
 			name: "Credentials",
@@ -38,11 +38,11 @@ export const nextAuthOptions: NextAuthOptions = {
 	],
 	pages: { signIn: "/login" },
 	callbacks: {
-		async jwt({ token, user }) {
+		async jwt({ token, user }: any) {
 			user && (token.user = user);
 			return token;
 		},
-		async session({ session, token }) {
+		async session({ session, token }: any) {
 			session = token.user as any;
 			return session;
 		},
