@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import {
-	CssVarsProvider,
 	Stack,
 	Typography,
 	Input,
@@ -20,6 +19,8 @@ import {
 import { AlertComponent, ChangeTheme } from "@/components";
 import { GitHub, RocketLaunch } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { NextResponse } from "next/server";
 
 interface MessageProps {
 	title: string;
@@ -27,13 +28,56 @@ interface MessageProps {
 	severity: "danger" | "success";
 }
 
+interface FormElements extends HTMLFormControlsCollection {
+	name: HTMLInputElement;
+	email: HTMLInputElement;
+	password: HTMLInputElement;
+	birthday: HTMLInputElement;
+}
+
+interface RegisterFormElement extends HTMLFormElement {
+	readonly elements: FormElements;
+}
+
 export default function Register() {
 	const [message, setMessage] = React.useState<MessageProps>();
 
 	const router = useRouter();
 
-	const handleSubmit = () => {
-		console.log("Success");
+	const handleSubmit = async (e: React.FormEvent<RegisterFormElement>) => {
+		e.preventDefault();
+		const formElements = e.currentTarget.elements;
+		const response = await fetch("http://localhost:8884/auth/register", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				name: formElements.name.value,
+				email: formElements.email.value,
+				password: formElements.password.value,
+				birthday: Date.now(),
+			}),
+		});
+		if (response.ok) {
+			setMessage({
+				title: "Success!",
+				description: "You are registered, welcome!",
+				severity: "success",
+			});
+			setTimeout(() => {
+				router.push("/login");
+			}, 1500);
+		} else {
+			setMessage({
+				title: "ERROR!",
+				description: "An error occurred, try again later...",
+				severity: "danger",
+			});
+			setTimeout(() => {
+				router.push("/");
+			}, 1500);
+		}
 	};
 
 	return (
@@ -136,6 +180,7 @@ export default function Register() {
 								variant="soft"
 								color="neutral"
 								fullWidth
+								onClick={() => signIn("github")}
 							>
 								Continue with GitHub
 							</Button>
