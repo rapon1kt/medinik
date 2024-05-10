@@ -21,9 +21,11 @@ import {
 	Typography,
 } from "@mui/joy";
 import { useMediaQuery } from "@mui/material";
+import { useSession } from "next-auth/react";
 import React from "react";
 
 export default function Support() {
+	const { data: session, status } = useSession();
 	const media = useMediaQuery("(max-width: 1120px)");
 
 	return (
@@ -35,7 +37,7 @@ export default function Support() {
 				minHeight: "100vh",
 			}}
 		>
-			<Navbar />
+			<Navbar session={session!} status={status} />
 			<Container
 				maxWidth="lg"
 				sx={{

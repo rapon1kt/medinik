@@ -23,8 +23,10 @@ import {
 	SafetyCheck,
 } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
+import { useSession } from "next-auth/react";
 
 export default function DownloadPage() {
+	const { data: session, status } = useSession();
 	const media = useMediaQuery("(max-width: 1120px)");
 
 	return (
@@ -36,7 +38,7 @@ export default function DownloadPage() {
 				minHeight: "100vh",
 			}}
 		>
-			<Navbar />
+			<Navbar session={session!} status={status} />
 			<Container
 				maxWidth="lg"
 				sx={{
