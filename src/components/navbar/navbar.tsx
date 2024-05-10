@@ -19,17 +19,21 @@ import {
 	LoginRounded,
 	RocketLaunch,
 	AccountCircle,
+	LogoutRounded,
 } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { signOut } from "next-auth/react";
+import { Session } from "next-auth";
+import React from "react";
 
-interface NavbarProps {
-	isLogged?: boolean;
+interface NavBarProps {
+	session: Session;
+	status: "authenticated" | "loading" | "unauthenticated";
 }
 
-function Navbar({ isLogged }: NavbarProps) {
+function Navbar({ session, status }: NavBarProps) {
 	const media = useMediaQuery("(max-width: 746px)");
-
 	return (
 		<Box sx={{ display: "flex", flexDirection: "column" }}>
 			{!media && (
@@ -103,15 +107,26 @@ function Navbar({ isLogged }: NavbarProps) {
 								</Button>
 							</Link>
 						</Stack>
-						<Link href="/login	">
+						{status !== "authenticated" ? (
+							<Link href="/login	">
+								<Button
+									variant="soft"
+									startDecorator={<LoginRounded />}
+									color="neutral"
+								>
+									Sign In
+								</Button>
+							</Link>
+						) : (
 							<Button
 								variant="soft"
-								startDecorator={<LoginRounded />}
+								startDecorator={<LogoutRounded />}
+								onClick={() => signOut()}
 								color="neutral"
 							>
-								Sign In
+								Sign Out
 							</Button>
-						</Link>
+						)}
 					</>
 				) : (
 					<Dropdown>
@@ -119,7 +134,7 @@ function Navbar({ isLogged }: NavbarProps) {
 							Menu
 						</MenuButton>
 						<Menu size="sm">
-							{isLogged && (
+							{status === "authenticated" && (
 								<MenuItem component="a" href="/profile" sx={{ gap: 1 }}>
 									<Button
 										variant="plain"
@@ -157,15 +172,27 @@ function Navbar({ isLogged }: NavbarProps) {
 									Support
 								</Button>
 							</MenuItem>
-							<MenuItem component="a" href="/login" sx={{ gap: 1 }}>
-								<Button
-									variant="plain"
-									startDecorator={<LoginRounded />}
-									color="neutral"
-								>
-									Sign In
-								</Button>
-							</MenuItem>
+							{status !== "authenticated" ? (
+								<MenuItem component="a" href="/login" sx={{ gap: 1 }}>
+									<Button
+										variant="plain"
+										startDecorator={<LoginRounded />}
+										color="neutral"
+									>
+										Sign In
+									</Button>
+								</MenuItem>
+							) : (
+								<MenuItem onClick={() => signOut()} sx={{ gap: 1 }}>
+									<Button
+										variant="plain"
+										startDecorator={<LogoutRounded />}
+										color="neutral"
+									>
+										Sign Out
+									</Button>
+								</MenuItem>
+							)}
 						</Menu>
 					</Dropdown>
 				)}
