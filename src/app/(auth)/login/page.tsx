@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import {
-	CssVarsProvider,
 	Stack,
 	Typography,
 	Input,
@@ -20,10 +19,21 @@ import {
 import { AlertComponent, ChangeTheme } from "@/components";
 import { RocketLaunch, GitHub } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 interface MessageProps {
 	title: string;
 	description: string;
 	severity: "danger" | "success";
+}
+
+interface FormElements extends HTMLFormControlsCollection {
+	email: HTMLInputElement;
+	password: HTMLInputElement;
+	persistent: HTMLInputElement;
+}
+
+interface SignInFormElement extends HTMLFormElement {
+	readonly elements: FormElements;
 }
 
 export default function Login() {
@@ -31,12 +41,33 @@ export default function Login() {
 
 	const router = useRouter();
 
-	const handleSubmit = () => {
-		console.log("Success");
+	const handleSubmit = async (e: React.FormEvent<SignInFormElement>) => {
+		e.preventDefault();
+		const formElements = e.currentTarget.elements;
+		const result = await signIn("credentials", {
+			email: formElements.email.value,
+			password: formElements.password.value,
+			redirect: false,
+		});
+		if (result?.ok) {
+			setMessage({
+				title: "Success!",
+				description: "You will be redirected, welcome!",
+				severity: "success",
+			});
+			setTimeout(() => {
+				router.push("/dashboard");
+			}, 1500);
+		} else {
+			setMessage({
+				title: "Something is wrong...",
+				description: "Credentials not valid",
+				severity: "danger",
+			});
+		}
 	};
-
 	return (
-		<CssVarsProvider defaultMode="dark" disableTransitionOnChange>
+		<>
 			<CssBaseline />
 			<GlobalStyles
 				styles={{
@@ -135,6 +166,7 @@ export default function Login() {
 								variant="soft"
 								color="neutral"
 								fullWidth
+								onClick={() => signIn("github")}
 							>
 								Continue with GitHub
 							</Button>
@@ -226,6 +258,6 @@ export default function Login() {
 					},
 				})}
 			/>
-		</CssVarsProvider>
+		</>
 	);
 }
