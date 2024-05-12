@@ -13,7 +13,6 @@ import {
 } from "@mui/joy";
 import {
 	Download,
-	Info,
 	Language,
 	Support,
 	LoginRounded,
@@ -88,15 +87,6 @@ function Navbar({ session, status }: NavBarProps) {
 									Downloads
 								</Button>
 							</Link>
-							<Link href="/infos">
-								<Button
-									variant="plain"
-									color="neutral"
-									startDecorator={<Info />}
-								>
-									Informations
-								</Button>
-							</Link>
 							<Link href="/support">
 								<Button
 									variant="plain"
@@ -152,15 +142,6 @@ function Navbar({ session, status }: NavBarProps) {
 									startDecorator={<Download />}
 								>
 									Downloads
-								</Button>
-							</MenuItem>
-							<MenuItem component="a" href="/infos" sx={{ gap: 1 }}>
-								<Button
-									variant="plain"
-									color="neutral"
-									startDecorator={<Info />}
-								>
-									Informations
 								</Button>
 							</MenuItem>
 							<MenuItem component="a" href="/support" sx={{ gap: 1 }}>
