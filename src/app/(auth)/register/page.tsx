@@ -224,7 +224,6 @@ export default function Register() {
 									size="sm"
 									label="Accept Terms of Use"
 									name="terms"
-									defaultChecked
 								/>
 								<Stack gap={4} sx={{ mt: 2 }}>
 									<Button variant="soft" color="danger" type="submit" fullWidth>
