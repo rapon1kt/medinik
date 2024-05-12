@@ -56,7 +56,7 @@ export default function Login() {
 				severity: "success",
 			});
 			setTimeout(() => {
-				router.push("/dashboard");
+				router.push("/profile");
 			}, 1500);
 		} else {
 			setMessage({
