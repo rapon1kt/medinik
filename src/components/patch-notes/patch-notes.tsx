@@ -20,17 +20,25 @@ function PatchNotes() {
 				sx={{
 					display: "flex",
 					flexDirection: "column",
-					alignItems: "center",
+					alignItems: !media ? "start" : "center",
+					mr: 4,
 				}}
 			>
 				<Chip
 					size="lg"
-					sx={{ mb: 2 }}
-					startDecorator={<Whatshot sx={{ color: "#cc0000" }} />}
+					sx={{
+						mb: 1.2,
+						height: "40px",
+						fontSize: "16px",
+					}}
+					startDecorator={
+						<Whatshot sx={{ color: "#cc0000", fontSize: "27px" }} />
+					}
+					variant="outlined"
 				>
 					Patch Notes v1.9.2
 				</Chip>
-				<Typography level={"h1"} sx={{ mb: 4 }}>
+				<Typography level="h1" sx={{ mb: 2, width: !media ? "30rem" : "auto" }}>
 					The <Typography sx={{ color: "#710000" }}>latest version </Typography>
 					of software is always waiting for you
 				</Typography>
@@ -38,23 +46,21 @@ function PatchNotes() {
 					<img
 						src="patch-notes.png"
 						alt="patch-notes"
-						style={{ width: 350, height: 320 }}
+						style={{ width: 450, height: 450 }}
 					/>
 				)}
-				<Typography
-					level={!media ? "body-lg" : "body-md"}
-					sx={{ width: "100%", mb: 3 }}
-				>
-					Proin at risus pharetra, bibendum nunc eget, pellentesque dui. Nunc
-					porta nulla at elementum placerat. Suspendisse gravida, justo in
-					facilisis rutrum, magna odio sollicitudin mauris, non maximus ex mi ac
-					risus.
+				<Typography level="body-lg" sx={{ width: "100%", mb: 3, mt: 2 }}>
+					We are continually dedicated to offering you the latest and greatest
+					version of our study organization software. These updates are designed
+					to ensure you have access to the best functionality and highest
+					efficiency no matter where you are in your academic journey.
 				</Typography>
 				<Typography
 					level="title-lg"
-					endDecorator={<East />}
+					endDecorator={<East sx={{ color: "rgb(228, 116, 116)" }} />}
+					textAlign="start"
 					component="a"
-					href="#"
+					href="https://github.com/rapon1kt/medinik"
 					sx={{
 						textDecoration: "none",
 						":hover": {
