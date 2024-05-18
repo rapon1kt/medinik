@@ -38,9 +38,9 @@ function Hero() {
 					sx={{ width: media ? "100%" : "60%", mb: 3 }}
 				>
 					Is innovative software created to transform the way students organize
-					and manage their studies. <br />
-					Stands out for a series of qualities that make it an indispensable
-					tool for any student seeking efficiency and academic success.
+					and manage their studies. Stands out for a series of qualities that
+					make it an indispensable tool for any student seeking efficiency and
+					academic success.
 				</Typography>
 				<Stack sx={{ display: "flex", flexDirection: "row", gap: 3, mb: 2 }}>
 					<Button
