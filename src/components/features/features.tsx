@@ -1,8 +1,9 @@
 import {
-	AdsClick,
+	AddTask,
 	Bolt,
-	CloudDone,
 	NewReleases,
+	People,
+	Timeline,
 	Whatshot,
 } from "@mui/icons-material";
 import { Container, Typography, Card, CardContent, Stack } from "@mui/joy";
@@ -46,7 +47,7 @@ function Features() {
 					}}
 				>
 					<CardContent>
-						<Typography level="h3" gutterBottom startDecorator={<Bolt />}>
+						<Typography level="h3" gutterBottom startDecorator={<People />}>
 							Intuitive Interface and User-Friendly
 						</Typography>
 						<Typography level="body-lg">
@@ -67,11 +68,7 @@ function Features() {
 					}}
 				>
 					<CardContent>
-						<Typography
-							level="h3"
-							gutterBottom
-							startDecorator={<NewReleases />}
-						>
+						<Typography level="h3" gutterBottom startDecorator={<AddTask />}>
 							Task and Deadline Management
 						</Typography>
 						<Typography level="body-lg">
@@ -92,7 +89,7 @@ function Features() {
 					}}
 				>
 					<CardContent>
-						<Typography level="h3" gutterBottom startDecorator={<CloudDone />}>
+						<Typography level="h3" gutterBottom startDecorator={<Timeline />}>
 							Review and Progress Monitoring Resources
 						</Typography>
 						<Typography level="body-lg">
