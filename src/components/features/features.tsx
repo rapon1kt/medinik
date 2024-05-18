@@ -31,93 +31,80 @@ function Features() {
 				sx={{
 					display: "flex",
 					flexDirection: media ? "column" : "row",
-					justifyContent: "center",
+					justifyContent: "space-between",
 					alignItems: "center",
 					gap: 4,
+					p: "2rem 0 2rem 0",
 				}}
 			>
 				<Card
-					variant="soft"
+					variant="plain"
 					size="lg"
 					sx={{
-						width: media ? "100%" : "30%",
+						width: media ? "90%" : "30%",
+						boxShadow: "0px 1px 10px 1px #b35656",
 					}}
 				>
 					<CardContent>
 						<Typography level="h3" gutterBottom startDecorator={<Bolt />}>
-							Fast
+							Intuitive Interface and User-Friendly
 						</Typography>
-						<Typography level="body-md">
-							Proin at risus pharetra, bibendum nunc eget, pellentesque dui.
-							Nunc porta nulla at elementum placerat. Suspendisse gravida, justo
-							in facilisis rutrum, magna odio sollicitudin mauris, non maximus
-							ex mi ac risus.
+						<Typography level="body-lg">
+							One of main qualities is its intuitive interface. From the first
+							access, users find a clean and organized design, making it easier
+							to navigate and use the available features. The learning curve is
+							minimal, allowing students to start using all of the software's
+							tools quickly and efficiently.
 						</Typography>
 					</CardContent>
 				</Card>
 				<Card
-					variant="soft"
+					variant="plain"
 					size="lg"
 					sx={{
-						width: media ? "100%" : "30%",
+						width: media ? "90%" : "30%",
+						boxShadow: "0px 1px 10px 1px #b35656",
 					}}
 				>
 					<CardContent>
-						<Typography level="h3" gutterBottom startDecorator={<AdsClick />}>
-							Simple
+						<Typography
+							level="h3"
+							gutterBottom
+							startDecorator={<NewReleases />}
+						>
+							Task and Deadline Management
 						</Typography>
-						<Typography level="body-md">
-							Proin at risus pharetra, bibendum nunc eget, pellentesque dui.
-							Nunc porta nulla at elementum placerat. Suspendisse gravida, justo
-							in facilisis rutrum, magna odio sollicitudin mauris, non maximus
-							ex mi ac risus.
+						<Typography level="body-lg">
+							Allows students to record all their academic activities, assign
+							deadlines and receive automatic reminders to ensure no assignment
+							is forgotten. Furthermore, the task prioritization functionality
+							helps users focus on what is most important, increasing
+							productivity and study efficiency.
 						</Typography>
 					</CardContent>
 				</Card>
 				<Card
-					variant="soft"
+					variant="plain"
 					size="lg"
 					sx={{
-						width: media ? "100%" : "30%",
+						width: media ? "90%" : "30%",
+						boxShadow: "0px 1px 10px 1px #b35656",
 					}}
 				>
 					<CardContent>
 						<Typography level="h3" gutterBottom startDecorator={<CloudDone />}>
-							Light
+							Review and Progress Monitoring Resources
 						</Typography>
-						<Typography level="body-md">
-							Proin at risus pharetra, bibendum nunc eget, pellentesque dui.
-							Nunc porta nulla at elementum placerat. Suspendisse gravida, justo
-							in facilisis rutrum, magna odio sollicitudin mauris, non maximus
-							ex mi ac risus.
+						<Typography level="body-lg">
+							The software allows students to record their learning sessions
+							study, take notes and mark the topics reviewed. With detailed
+							graphs and reports, users can view their progress over time,
+							identifying areas for improvement and adjusting your study methods
+							as needed.
 						</Typography>
 					</CardContent>
 				</Card>
 			</Stack>
-			<Card
-				variant="soft"
-				size="lg"
-				sx={{ width: media ? "100%" : "80%", m: 3 }}
-			>
-				<CardContent
-					sx={{ display: "flex", alignItems: "center", textAlign: "start" }}
-				>
-					<Typography level="h2" gutterBottom startDecorator={<NewReleases />}>
-						New functions monthly
-					</Typography>
-					<Typography level="body-md">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-						consectetur purus vitae aliquam posuere. Maecenas facilisis pretium
-						nulla at interdum. Nullam volutpat pharetra ultricies. Nunc mattis
-						auctor pellentesque. Duis id viverra dui. Aenean vestibulum enim
-						quis nisl consectetur, non gravida sem rhoncus. Curabitur ultricies
-						semper placerat. Mauris accumsan rhoncus est nec aliquam. Nullam ut
-						fermentum turpis. Mauris sollicitudin urna nec metus malesuada
-						lobortis. Sed turpis libero, cursus ac dapibus sed, pharetra ac
-						tellus.
-					</Typography>
-				</CardContent>
-			</Card>
 		</Container>
 	);
 }
