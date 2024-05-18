@@ -37,11 +37,10 @@ function Hero() {
 					level="body-lg"
 					sx={{ width: media ? "100%" : "60%", mb: 3 }}
 				>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-					scelerisque accumsan fermentum. Proin at risus pharetra, bibendum nunc
-					eget, pellentesque dui. Nunc porta nulla at elementum placerat.
-					Suspendisse gravida, justo in facilisis rutrum, magna odio
-					sollicitudin mauris, non maximus ex mi ac risus.
+					Is innovative software created to transform the way students organize
+					and manage their studies. <br />
+					Stands out for a series of qualities that make it an indispensable
+					tool for any student seeking efficiency and academic success.
 				</Typography>
 				<Stack sx={{ display: "flex", flexDirection: "row", gap: 3, mb: 2 }}>
 					<Button
