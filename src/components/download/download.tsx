@@ -8,8 +8,11 @@ function Download() {
 
 	return (
 		<Container maxWidth="lg" sx={{ textAlign: "center", my: 16 }}>
-			<Typography level="h1">
-				Start using <Typography sx={{ color: "#710000" }}>Medinik</Typography>{" "}
+			<Typography gutterBottom level="h1">
+				Start using{" "}
+				<Typography sx={{ color: "#710000", fontFamily: "Josefin Sans" }}>
+					Medinik
+				</Typography>{" "}
 				Software now
 			</Typography>
 			<Typography level="body-lg" sx={{ mb: 4 }}>
@@ -28,6 +31,8 @@ function Download() {
 					variant="soft"
 					color="neutral"
 					size="lg"
+					component="a"
+					href="/register"
 					sx={{
 						background: "#710000",
 						transition: "ease-in-out 0.2s all",
@@ -46,6 +51,8 @@ function Download() {
 					color="neutral"
 					size="lg"
 					sx={{ borderColor: "#710000", width: "15rem" }}
+					component="a"
+					href="/download"
 					endDecorator={<FileDownload />}
 				>
 					Download
